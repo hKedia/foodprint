@@ -1,0 +1,47 @@
+{
+  "name": "backend-users",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "nodemon --exec babel-node src/index.js",
+    "build": "babel src --out-dir dist",
+    "serve": "node dist/index.js",
+    "lint": "./node_modules/.bin/eslint --fix --ignore-path .gitignore ."
+  },
+  "keywords": [
+    "node",
+    "backend",
+    "users",
+    "backend-users"
+  ],
+  "author": "Coozzy AG",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.5",
+    "@babel/node": "^7.4.5",
+    "@babel/plugin-proposal-optional-chaining": "^7.2.0",
+    "@babel/plugin-proposal-throw-expressions": "^7.2.0",
+    "@babel/preset-env": "^7.4.5",
+    "@babel/polyfill": "^7.4.3",
+    "eslint": "^5.16.0",
+    "babel-eslint": "^10.0.1",
+    "nodemon": "^1.19.1"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "compression": "^1.7.4",
+    "express": "^4.16.4",
+    "express-async-handler": "^1.1.4",
+    "swagger-jsdoc": "^3.2.8",
+    "swagger-model-validator": "^3.0.10",
+    "swagger-ui-express": "^4.0.2",
+    "base-64": "^0.1.0",
+    "mysql2": "^1.6.5",
+    "knex": "^0.16.3",
+    "uniqid": "^5.0.3",
+    "sequelize": "^4.43.1",
+    "prom-client": "^11.5.0",
+    "path": "^0.12.7",
+    "winston": "^3.2.1"
+  }
+}
