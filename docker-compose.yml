@@ -1,0 +1,50 @@
+version: "3.4"
+
+services:
+
+
+### mysql #######################################
+  mysql:
+    image: library/mysql:5.7
+    entrypoint: ['/entrypoint.sh', '--character-set-server=utf8', '--collation-server=utf8_general_ci']
+    user: mysql
+    environment:
+      - MYSQL_DATABASE=foodprint
+      - MYSQL_USER=foodprint
+      - MYSQL_PASSWORD=foodprint
+      - MYSQL_ROOT_PASSWORD=pass@456
+      - TZ=Europe/Zurich
+    ports:
+      - "3306:3306"
+
+### chain #######################################
+  chain:
+    build:
+      context: ./chain
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - TZ=Europe/Zurich
+      - NODE_ENV=development
+      - PORT=3000
+      - LOG_LEVEL=debug
+      - DATABASE_URL=mysql://foodprint:foodprint@mysql:3306/foodprint
+    depends_on:
+      - mysql
+
+### users #######################################
+  users:
+    build:
+      context: ./users
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - TZ=Europe/Zurich
+      - NODE_ENV=development
+      - PORT=3000
+      - LOG_LEVEL=debug
+      - DATABASE_URL=mysql://foodprint:foodprint@mysql:3306/foodprint
+    depends_on:
+      - mysql

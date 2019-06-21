@@ -1,0 +1,69 @@
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  labels:
+    app: chain
+    platform: node
+    framework: express
+    version: backend-chain-version
+  name: chain
+  namespace: backend
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: chain
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+    type: RollingUpdate
+  template:
+    metadata:
+      annotations:
+        prometheus.io.scrape: "true"
+        prometheus.io.port: "3000"
+        prometheus.io.path: /metrics
+      labels:
+        app: chain
+        platform: node
+        framework: express
+        version: backend-chain-version
+    spec:
+      containers:
+        - env:
+            - name: LOG_LEVEL
+              value: debug
+            - name: NODE_ENV
+              value: production
+            - name: HTTP_PORT
+              value: "3000"
+            - name: TZ
+              value: Europe/Zurich               
+            - name: DATABASE_URL
+              valueFrom:
+                secretKeyRef:
+                  key: DATABASE_URL
+                  name: chain
+                  optional: false
+          image: docker.coozzy.ch/backend-chain:backend-chain-version
+          imagePullPolicy: IfNotPresent
+          name: chain
+          resources: {}
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities: {}
+            privileged: false
+            readOnlyRootFilesystem: false
+            runAsNonRoot: false
+          stdin: true
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          tty: true
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
