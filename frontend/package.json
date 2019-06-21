@@ -3,9 +3,25 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "scripts": {
+    "dev": "node server.js",
+    "build": "next build",
+    "start": "NODE_ENV=production node server.js"
+  },
   "dependencies": {
+    "blockstack": "^19.2.1",
+    "dotenv": "^8.0.0",
+    "express": "^4.17.1",
+    "express-ws": "^4.0.0",
+    "moment": "^2.24.0",
     "next": "^8.1.0",
+    "radiks": "^0.2.1",
+    "radiks-server": "^0.1.12",
     "react": "^16.8.6",
-    "react-dom": "^16.8.6"
+    "react-dom": "^16.8.6",
+    "react-toastify": "^5.3.1",
+    "semantic-ui-react": "^0.87.2",
+    "shortid": "^2.2.14",
+    "styled-components": "^4.3.2"
   }
 }
