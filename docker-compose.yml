@@ -39,11 +39,11 @@ services:
       context: ./users
       dockerfile: Dockerfile
     ports:
-      - "3000:3000"
+      - "3001:3001"
     environment:
       - TZ=Europe/Zurich
       - NODE_ENV=development
-      - PORT=3000
+      - PORT=3001
       - LOG_LEVEL=debug
       - DATABASE_URL=mysql://foodprint:foodprint@mysql:3306/foodprint
     depends_on:
