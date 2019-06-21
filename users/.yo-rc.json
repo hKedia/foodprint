@@ -1,0 +1,22 @@
+{
+  "generator-nozzy": {
+    "version": "2.3.0",
+    "namespace": "backend",
+    "service": "users",
+    "http": {
+      "enabled": true
+    },
+    "mysql": {
+      "enabled": true
+    },
+    "mongo": {
+      "enabled": false
+    },
+    "grpc": {
+      "enabled": false
+    },
+    "amqp": {
+      "enabled": false
+    }
+  }
+}
