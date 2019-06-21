@@ -27,7 +27,7 @@ services:
     environment:
       - TZ=Europe/Zurich
       - NODE_ENV=development
-      - PORT=3000
+      - HTTP_PORT=3000
       - LOG_LEVEL=debug
       - DATABASE_URL=mysql://foodprint:foodprint@mysql:3306/foodprint
     depends_on:
@@ -43,7 +43,7 @@ services:
     environment:
       - TZ=Europe/Zurich
       - NODE_ENV=development
-      - PORT=3001
+      - HTTP_PORT=3001
       - LOG_LEVEL=debug
       - DATABASE_URL=mysql://foodprint:foodprint@mysql:3306/foodprint
     depends_on:

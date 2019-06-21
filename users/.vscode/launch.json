@@ -1,0 +1,25 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Launch via NPM",
+            "runtimeExecutable": "npm",
+            "runtimeArgs": [
+                "run",
+                "start"
+            ],
+            "env": {
+                "TZ": "Europe/Zurich",
+                "NODE_ENV": "development",
+                "HTTP_PORT": "3000",
+                "LOG_LEVEL": "debug",
+                "DATABASE_URL": "mysql://foodprint:foodprint@mysql:3306/foodprint",
+            }
+        }
+    ]
+}
