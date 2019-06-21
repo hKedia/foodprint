@@ -1,0 +1,14 @@
+{
+  "name": "foodprint",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "blockstack": "^19.2.1",
+    "dotenv": "^8.0.0",
+    "next": "^8.1.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "shortid": "^2.2.14"
+  }
+}
