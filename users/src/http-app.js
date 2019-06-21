@@ -21,7 +21,7 @@ app.use(bodyParser.json());
 
 // === Routes ===
 app.use('/api-docs', swagger.router);
-app.use('/web/backend', router);
+app.use('/', router);
 app.use(httpErrorHandler);
 
 module.exports = app;
