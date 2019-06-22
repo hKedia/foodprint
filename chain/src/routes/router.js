@@ -33,9 +33,12 @@ import Product from '../db/model/product'
  *              schema:
  *                  $ref: '#/definitions/ErrorResponse'
  */
-router.get('/getChain', asyncHandler(async (req, res) => {
-    Ref.findAll({ where: { batch_id: req.body.id } }).then(async (refs) => {
-        return res.status(200).json(await search(refs,req.body.id));
+router.get('/', asyncHandler(async (req, res) => {
+    res.status(200).json({"status":"ok"})
+}))
+router.get('/chain/getChain', asyncHandler(async (req, res) => {
+    Ref.findAll({ where: { batch_id: req.query.id } }).then(async (refs) => {
+        return res.status(200).json(await search(refs,req.query.id));
     })
     logger.debug('Received GET on /');
 }));

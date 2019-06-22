@@ -5,10 +5,6 @@ import logger from '../misc/logger';
 import asyncHandler from 'express-async-handler';
 import Harvest from '../db/model/harvest'
 
-// rec_get = function(batch){
-//     batch.filter(batch => batch.product_id > 1000);
-// };
-
 /**
  * @swagger
  * /:
@@ -34,22 +30,19 @@ import Harvest from '../db/model/harvest'
  *              schema:
  *                  $ref: '#/definitions/ErrorResponse'
  */
-router.get('/getHarvest', asyncHandler(async (req, res) => {
+router.get('/', asyncHandler(async (req, res) => {
+    logger.debug('Received GET on /');
+    return res.status(200).json(harvests);
+    }))
+
+router.get('/users/getHarvest', asyncHandler(async (req, res) => {
     logger.debug('Received GET on /getHarvest');
-    Harvest.findAll({ where: { did: req.body.did } }).then(harvests => {
+    Harvest.findAll({ where: { did: req.query.did } }).then(harvests => {
         return res.status(200).json(harvests);
     })
     console.log(req)
     
 }));
-// router.get('/getBatch', asyncHandler(async (req, res) => {
-//     logger.debug('Received GET on /getBatch');
-//     Batches.findAll({ where: { product_id: req.body.pid } }).then(batches => {
-//         return res.status(200).json(batches);
-//     })
-//     console.log(req)
-    
-// }));
 
 module.exports = router;
 
