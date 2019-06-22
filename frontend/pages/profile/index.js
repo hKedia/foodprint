@@ -8,11 +8,11 @@ const StyledImage = Styled(Image)`
   padding-top: 4vh;
 `;
 
-const StyledIngredientsContainer = Styled(Container)`
-  background: rgba(20, 20, 20, 0.1);
-  margin-left: 0em !important;
-  margin-right: 0em !importa  nt;
-  height: 55vh!important;
+const StyledIngredientsContainer = Styled.div`
+  &&& {
+    background: rgba(20, 20, 20, 0.1);
+    height: 55vh
+  }
 `;
 
 const StyledItem = Styled(Item)`
@@ -54,7 +54,7 @@ const RightGridColumn = Styled(Grid.Column)`
 export default class Product extends Component {
   render() {
     return (
-      <Layout title='Product Details'>
+      <Layout title='Profile'>
         <StyledProductContainer>
           <StyledImage src='/static/profile/hans.png' size='small' centered />
           <Header as='h2' icon textAlign='center'>
@@ -78,17 +78,7 @@ export default class Product extends Component {
               </Grid>
             </StyledItemContent>
           </StyledItem>
-          <StyledItem>
-            <Item.Image size='tiny' src='/static/profile/strawberries.png' />
-            <StyledItemContent>
-              <Grid columns={2} relaxed='very'>
-                <LeftGridColumn> Strawberries </LeftGridColumn>
-                <RightGridColumn>
-                  <Label circular color='green'>Vegan</Label>
-                </RightGridColumn>
-              </Grid>
-            </StyledItemContent>
-          </StyledItem>
+
           <StyledItem>
             <Item.Image size='tiny' src='/static/profile/potatoes.png' />
             <StyledItemContent>
