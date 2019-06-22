@@ -22,3 +22,13 @@ This section explains the design decisions that were made and also shows the moc
 
 * Almost Black: It's a very dark shade of blue used to reduce the sharp contrast of pure black on a light background for the reader.
 
+### Target user persona
+
+The FoodPrint application system would have potentially 3 categories:
+1. Consciously aware consumer
+2. Intermediary in the supply chain
+3. Farmer - The source of raw materials
+
+The following persona captures the feel of the target user class - Consumer
+
+![UserPersona](https://github.com/hKedia/foodprint/blob/master/documentation/persona.png)
