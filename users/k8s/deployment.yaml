@@ -5,7 +5,7 @@ metadata:
     app: users
     platform: node
     framework: express
-    version: backend-users-version
+    version: 1.1.0
   name: users
   namespace: backend
 spec:
@@ -30,7 +30,7 @@ spec:
         app: users
         platform: node
         framework: express
-        version: backend-users-version
+        version: 1.1.0
     spec:
       containers:
         - env:
@@ -51,9 +51,9 @@ spec:
               valueFrom:
                 secretKeyRef:
                   key: DATABASE_URL
-                  name: users
+                  name: db
                   optional: false
-          image: docker.coozzy.ch/backend-users:backend-users-version
+          image: 367165238327.dkr.ecr.us-east-1.amazonaws.com/users:1.1.0
           imagePullPolicy: IfNotPresent
           name: users
           resources: {}

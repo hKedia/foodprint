@@ -5,7 +5,7 @@ metadata:
     app: chain
     platform: node
     framework: express
-    version: backend-chain-version
+    version: 1.3.0 
   name: chain
   namespace: backend
 spec:
@@ -30,7 +30,7 @@ spec:
         app: chain
         platform: node
         framework: express
-        version: backend-chain-version
+        version: 1.3.0
     spec:
       containers:
         - env:
@@ -41,14 +41,14 @@ spec:
             - name: HTTP_PORT
               value: "3000"
             - name: TZ
-              value: Europe/Zurich               
+              value: Europe/Zurich   
             - name: DATABASE_URL
               valueFrom:
                 secretKeyRef:
                   key: DATABASE_URL
-                  name: chain
-                  optional: false
-          image: docker.coozzy.ch/backend-chain:backend-chain-version
+                  name: db
+                  optional: false            
+          image: 367165238327.dkr.ecr.us-east-1.amazonaws.com/chain:1.3.0
           imagePullPolicy: IfNotPresent
           name: chain
           resources: {}
