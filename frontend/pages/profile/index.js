@@ -51,6 +51,16 @@ const RightGridColumn = Styled(Grid.Column)`
   content-align: right;
 `;
 
+const TipButton = Styled(Button)`
+ &&& {
+    margin: 2em 0 0 1.3em;
+    background: #E8662F;
+    box-shadow: 0 1px 3px 1px rgba(98,49,5,0.64);
+    border-radius: 7px;
+    width: 90%;
+  }
+`;
+
 export default class Product extends Component {
   render() {
     return (
@@ -90,6 +100,7 @@ export default class Product extends Component {
               </Grid>
             </StyledItemContent>
           </StyledItem>
+          <TipButton>Send a Tip</TipButton>
         </StyledIngredientsContainer>
       </Layout>
     );
