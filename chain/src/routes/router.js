@@ -6,6 +6,7 @@ import asyncHandler from 'express-async-handler';
 
 import Ref from '../db/model/ref'
 import Batch from '../db/model/batch'
+import Product from '../db/model/product'
 
 /**
  * @swagger
@@ -33,32 +34,36 @@ import Batch from '../db/model/batch'
  *                  $ref: '#/definitions/ErrorResponse'
  */
 router.get('/getChain', asyncHandler(async (req, res) => {
-    Ref.findAll({ where: { batch_id: req.body.id } }).then(refs => {
-        return res.status(200).json(search(refs,req.body.id));
+    Ref.findAll({ where: { batch_id: req.body.id } }).then(async (refs) => {
+        return res.status(200).json(await search(refs,req.body.id));
     })
     logger.debug('Received GET on /');
-
 }));
 
-function search(refs,id) {
+ async function search(refs,id) {
     if (refs.length == 0) {
-        Batch.findOne({ where: { id: id } }).then(batch => {
-            return batch;
-        })
+        const batch = await Batch.findOne({ where: { id: id }});
+        const product = await Product.findOne({ where: { id: batch.dataValues.productId }});
+        return {"batch":batch.dataValues, "product":product.dataValues.name}
     } else {
-        Batch.findOne({ where: { id: id } }).then(batch => {
-            console.log(batch)
+        const fullBatch = await Batch.findOne({ where: { id: id }}).then(async (batch) => {
             var subBatches = [];
+            var subBatch = {}
+            var i = 0;
             for (i=0; i<refs.length; i++){
-                Ref.findAll({ where: { batch_id: refs[i].id } }).then(refs2 => {
-                    subBatches.push(search(refs2,refs[i].id))
+                await Ref.findAll({ where: { batch_id: refs[i].dataValues.refId } }).then(async (refs2) => {
+                    subBatch = await search(refs2,refs[i].dataValues.refId)
+                    subBatches.push(subBatch);
                 })
             }
+            const product = await Product.findOne({ where: { id: batch.dataValues.productId }});
             return {
-                "batch":batch,
+                "batch":batch.dataValues,
+                "product":product.dataValues.name,
                 "subBatches":subBatches
             };
-        })
+        });
+        return fullBatch;
     }
 }
 

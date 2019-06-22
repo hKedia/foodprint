@@ -19,7 +19,10 @@ module.exports = connection;
 
 const batchModel = require('./model/batch');
 const refModel = require('./model/batch');
+const productModel = require('./model/product');
 
 module.exports.Batch = batchModel;
 module.exports.Ref = refModel;
+module.exports.Product = productModel;
+
 

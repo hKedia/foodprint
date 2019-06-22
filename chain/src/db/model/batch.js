@@ -53,4 +53,5 @@ const Batch = db.define('batch', {
     ]
 });
 
+
 module.exports = Batch;
