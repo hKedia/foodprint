@@ -36,3 +36,8 @@ The FoodPrint application system would have potentially 3 categories:
 The following persona captures the feel of the target user class - Consumer
 
 ![UserPersona](https://github.com/hKedia/foodprint/blob/master/documentation/persona.png)
+
+### App flow
+
+![AppFlow](https://github.com/hKedia/foodprint/blob/master/documentation/appflow.png)
+
