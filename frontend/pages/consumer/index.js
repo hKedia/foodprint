@@ -31,6 +31,17 @@ const StyledItemContent = Styled(Item.Content)`
 `;
 
 export default class Consumer extends Component {
+  state = {
+    qrdata: null
+  }
+
+  componentDidUpdate() {
+    Router.push({
+      pathname: '/product',
+      query: { name: this.state.qrdata }
+    })
+  }
+
   onUnmount() {
     console.log('Modal Closed');
   }
@@ -40,12 +51,8 @@ export default class Consumer extends Component {
   }
 
   handleScan = data => {
-    console.log(data);
     if (data) {
-      Router.push({
-        pathname: '/product',
-        query: data
-      })
+      this.setState({ qrdata: data });
     }
   }
 

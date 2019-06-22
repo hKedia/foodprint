@@ -3,19 +3,20 @@ import Layout from '../../components/Layout';
 import Styled from 'styled-components';
 import { Button, Image, Header, Divider, Container, Item, Label } from 'semantic-ui-react';
 
+const axios = require('axios');
 
 const StyledImage = Styled(Image)`
   padding-top: 4vh;
 `;
 
-const StyledIngredientsContainer = Styled(Container)`
-  background: rgba(20, 20, 20, 0.1);
-  margin-left: 0em !important;
-  margin-right: 0em !important;
-  height: 55vh!important;
+const StyledIngredientsContainer = Styled.div`
+  &&& {
+      background: rgba(20, 20, 20, 0.1);
+      height: 55vh
+    }
 `;
 
-const StyledIngredientContainer = Styled(Container)`
+const StyledIngredientContainer = Styled.div`
   background: rgba(255, 255, 255, 0.9);
   margin: 5%;
   height: 25%;
@@ -51,18 +52,29 @@ const StyledIngredientHeader = Styled(Header)`
 `;
 
 export default class Product extends Component {
+  state = {
+
+  }
+  static async getInitialProps({ query }) {
+    const jsonData = JSON.parse(query.name);
+    const response = await axios.get('https://foodprint.rezervatorul.ro/chain/getChain?id=' + jsonData.ingredient_id);
+    const data = response.data;
+    return { data };
+  }
+
   render() {
+    const { batch, product, subBatches } = this.props.data;
     return (
       <Layout title='Product Details'>
         <StyledProductContainer>
           <StyledImage src='/static/ingredients/sandwich.png' size='small' centered />
           <Header as='h2' icon textAlign='center'>
-            <Header.Content>Veggie Sandwich
-          <Header.Subheader>Coop</Header.Subheader>
+            <Header.Content>{product}
+              <Header.Subheader>Coop</Header.Subheader>
             </Header.Content>
             <Label circular color='black'>Vegetarian</Label>
-            <Label circular color='green'>Bio</Label>
-            <Header.Content>2.50 € | 250 gr</Header.Content>
+            <Label circular color='green' empty={!batch.organic}>Bio</Label>
+            <Header.Content>€ {Math.floor(batch.price / batch.weight)} | 200 gr</Header.Content>
           </Header>
         </StyledProductContainer>
         <Divider fitted />
@@ -104,7 +116,7 @@ export default class Product extends Component {
             </StyledItemContent>
           </StyledItem>
         </StyledIngredientsContainer>
-        </Layout>
-        );
+      </Layout>
+    );
   }
 }
