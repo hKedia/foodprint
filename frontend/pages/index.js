@@ -1,22 +1,61 @@
 import React, { Component } from 'react';
-import Router from 'next/router';
 import Styled from 'styled-components';
-
 import { User, getConfig } from 'radiks';
-import { Segment, Header, Button, Grid } from 'semantic-ui-react';
-import { getPublicKeyFromPrivate } from 'blockstack';
+import { Image, Icon } from 'semantic-ui-react';
 
-const Title = Styled(Header)`
-  &&& {
-    font-size: 1.5em;
-    text-align: center;
-    color: palevioletred;
-  }
+const Container = Styled.div`
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  background: url('/static/login/background.png') center no-repeat;
+  background-size: cover;
+  height: 100vh;
+`;
+
+const Logo = Styled.div`
+
+`;
+
+const TypeText = Styled.div`
+  background: #fff;
+  grid-column: 1;
+`;
+
+const TypeContainer = Styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
+const UserType = Styled.div`
+  background: #fff;
+  padding: 1.2em;
+  border: 1px solid #fff;
+  border-radius: 2px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 100px;
+`;
+
+const LoginContainer = Styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+const LoginButton = Styled.button`
+
+`;
+
+const SecureText = Styled.div`
+  color: #fff;
 `;
 
 class Home extends Component {
   state = {
-    loading: false
+    loading: false,
+    role: null
   }
 
   async componentDidMount() {
@@ -25,27 +64,12 @@ class Home extends Component {
     if (userSession.isUserSignedIn()) {
       //this.setState({ loading: true });
       const user = userSession.loadUserData();
-      await this.savePublicKey(user, userSession);
     }
     else if (userSession.isSignInPending()) {
       this.setState({ loading: true });
       const user = await userSession.handlePendingSignIn();
       await User.createWithCurrentUser();
-      await this.savePublicKey(user, userSession)
     }
-  }
-
-  async savePublicKey(user, userSession) {
-    userSession.getFile(`user/${user.username}`, { decrypt: false }).then(async (data) => {
-      if (data === null) {
-        console.log('no data');
-        const publicKey = getPublicKeyFromPrivate(user.appPrivateKey);
-        //await userSession.putFile(`keys/${user.username}`, JSON.stringify(publicKey), { encrypt: false });
-        console.log('new user saved');
-      } else {
-        console.log('user exists. redirecting...')
-      }
-    });
   }
 
   login = () => {
@@ -61,16 +85,29 @@ class Home extends Component {
 
   render() {
     return (
-      <Grid container verticalAlign='middle' textAlign='center' style={{ height: "100vh" }}>
-        <Grid.Row>
-          <Grid.Column>
-            <Segment placeholder padded loading={this.state.loading}>
-              <Title>Login with Blockstack to continue</Title>
-              <Button basic color='purple' size='large' onClick={this.login}>Login</Button>
-            </Segment>
-          </Grid.Column>
-        </Grid.Row>
-      </Grid>
+      <Container>
+        <Logo>
+          <Image src='static/Logo.png' />
+        </Logo>
+        <TypeText>Select User Type</TypeText>
+        <TypeContainer>
+          <UserType>
+            <Image src='/static/login/consumer.png' />
+            <span>Consumer</span>
+          </UserType>
+          <UserType>
+            <Image src='/static/login/supplier.png' />
+            <span>Supplier</span>
+          </UserType>
+        </TypeContainer>
+        <LoginContainer>
+          <LoginButton>Login</LoginButton>
+          <SecureText>
+            <Icon name='lock' />
+            <span>Securely Identify with Blockstack</span>
+          </SecureText>
+        </LoginContainer>
+      </Container>
     )
   }
 }
