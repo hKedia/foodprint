@@ -4,6 +4,10 @@
 
 ## About
 
+FoodPrint is a system that uses blockchain technologies to provide transparency in the supply chain of agriculture. This would be realised by connecting the consumer and producer (farmer) virtually. This connection would help the consumers to get an overview about how and when the food item was processed in the chain. 
+
+The name FoodPrint is derived from the play of words Foot-print. Just like a foot-print can be used to track and identify a person, our application allows the user (from consumer side) to track the food item's journey. With a quick scan, the consumer would be able to know the origins of the verious ingredients which compose that particular food item.
+
 ## Design
 
 This section explains the design decisions that were made and also shows the mockup of the envisioned user interface design.
