@@ -4,6 +4,9 @@ import logger from '../misc/logger';
 
 import asyncHandler from 'express-async-handler';
 
+import Ref from '../db/model/ref'
+import Batch from '../db/model/batch'
+
 /**
  * @swagger
  * /:
@@ -29,12 +32,35 @@ import asyncHandler from 'express-async-handler';
  *              schema:
  *                  $ref: '#/definitions/ErrorResponse'
  */
-router.get('/', asyncHandler(async (req, res) => {
+router.get('/getChain', asyncHandler(async (req, res) => {
+    Ref.findAll({ where: { batch_id: req.body.id } }).then(refs => {
+        return res.status(200).json(search(refs,req.body.id));
+    })
     logger.debug('Received GET on /');
-    return res.status(200).json({
-        'status': 'ok'
-    });
+
 }));
+
+function search(refs,id) {
+    if (refs.length == 0) {
+        Batch.findOne({ where: { id: id } }).then(batch => {
+            return batch;
+        })
+    } else {
+        Batch.findOne({ where: { id: id } }).then(batch => {
+            console.log(batch)
+            var subBatches = [];
+            for (i=0; i<refs.length; i++){
+                Ref.findAll({ where: { batch_id: refs[i].id } }).then(refs2 => {
+                    subBatches.push(search(refs2,refs[i].id))
+                })
+            }
+            return {
+                "batch":batch,
+                "subBatches":subBatches
+            };
+        })
+    }
+}
 
 module.exports = router;
 

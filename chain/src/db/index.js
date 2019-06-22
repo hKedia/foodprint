@@ -1,6 +1,4 @@
 import Sequelize from 'sequelize';
-import Knex from 'knex';
-import path from 'path';
 
 import envs from '../misc/envs';
 import logger from '../misc/logger';
@@ -19,31 +17,9 @@ connection.authenticate()
     });
 module.exports = connection;
 
-// Execute migrations
-const knex = Knex({
-    client: 'mysql2',
-    connection: envs.DATABASE_URL,
-    migrations: {
-        directory: path.join(__dirname + '/migrations'),
-        tableName: 'knex_migrations'
-    },
-    log: {
-        error(message) {
-            logger.error(message);
-        },
-        warn(message) {
-            logger.warn(message);
-        },
-        deprecate(message) {
-            logger.info(message);
-        },
-        debug(message) {
-            logger.debug(message);
-        },
-    }
-});
-knex.migrate.latest();
+const batchModel = require('./model/batch');
+const refModel = require('./model/batch');
 
-const requestModel = require('./model/batch');
+module.exports.Batch = batchModel;
+module.exports.Ref = refModel;
 
-module.exports.Request = requestModel;

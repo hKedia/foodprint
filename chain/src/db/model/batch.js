@@ -20,7 +20,7 @@ const Batch = db.define('batch', {
     },
     price: {
         field: 'price',
-        type: Sequelize.DataTypes.INTEGER(),
+        type: Sequelize.DataTypes.DOUBLE(),
         allowNull: false,
     },
     weight: {
