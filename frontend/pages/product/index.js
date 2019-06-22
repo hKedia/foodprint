@@ -73,8 +73,8 @@ export default class Product extends Component {
             <StyledItemContent>
               <Item.Header as='a'>Oat-Bread</Item.Header>
               <Item.Meta>Kaufland</Item.Meta>
-              <Item.Description>
-                <Label circular color='green'>Vegan</Label>
+                <Item.Description>
+                  <Label circular color='green'>Vegan</Label>
                 <Label circular color='green'>Bio</Label>
                 <Label>150 gr</Label>
               </Item.Description>
