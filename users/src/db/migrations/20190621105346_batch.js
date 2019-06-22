@@ -1,5 +1,5 @@
 exports.up = function (knex) {
-    return knex.schema.createTable('logs', function (table) {
+    return knex.schema.createTable('batches', function (table) {
         table.integer('id').primary();
         table.integer('product_id').notNull();
         table.boolean('organic').notNull();

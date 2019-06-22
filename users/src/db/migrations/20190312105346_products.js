@@ -1,10 +1,8 @@
 exports.up = function (knex) {
-    return knex.schema.createTable('users', function (table) {
+    return knex.schema.createTable('products', function (table) {
         table.integer('id').primary();
-        table.boolean('bio');
+        table.integer('prod_id').notNull();
         table.string('name',255).notNull();
-        table.string('blockchain_id',255).notNull();
-        table.string('digital_cert',255);
         table.dateTime('created_at').notNull();
         table.dateTime('updated_at').notNull();
         table.dateTime('deleted_at');
@@ -12,5 +10,5 @@ exports.up = function (knex) {
 };
 
 exports.down = function (knex) {
-    knex.schema.dropTable('users')
+    knex.schema.dropTable('products')
 };

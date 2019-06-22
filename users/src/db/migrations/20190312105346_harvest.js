@@ -4,6 +4,7 @@ exports.up = function (knex) {
         table.date('date').notNull();
         table.string('prod_id',255).notNull();
         table.boolean('waste');
+        table.string('did').notNull();
         table.dateTime('created_at').notNull();
         table.dateTime('updated_at').notNull();
         table.dateTime('deleted_at');

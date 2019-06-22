@@ -20,7 +20,13 @@ const harvestModel = db.define('harvest', {
     },
     Waste: {
         field: 'waste',
-        type: Sequelize.DataTypes.BOOLEAN
+        type: Sequelize.DataTypes.BOOLEAN,
+        allowNull: false
+    },
+    did: {
+        field: 'did',
+        type: Sequelize.DataTypes.STRING,
+        allowNull: false
     }
 }, {
     paranoid: true, // Support soft delete with 'deleted_at'

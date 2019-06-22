@@ -44,6 +44,6 @@ const knex = Knex({
 });
 knex.migrate.latest();
 
-const requestModel = require('./model/users');
+const harvestModel = require('./model/harvest');
 
-module.exports.Request = requestModel;
+module.exports.Harvest = harvestModel;

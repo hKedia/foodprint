@@ -18,7 +18,7 @@
                 "NODE_ENV": "development",
                 "HTTP_PORT": "3000",
                 "LOG_LEVEL": "debug",
-                "DATABASE_URL": "mysql://foodprint:foodprint@localhost:3306/foodprint",
+                "DATABASE_URL": "mysql://root:foodprint@farfrogs.cgk2kax72ghb.us-east-1.rds.amazonaws.com:3306/foodprint",
             }
         }
     ]
