@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Layout from '../../components/Layout';
-import { Button, Modal } from 'semantic-ui-react';
+import { Button, Modal, Label, Header } from 'semantic-ui-react';
 import Styled from 'styled-components';
 import QrReader from 'react-qr-reader';
 
@@ -34,9 +34,8 @@ export default class Consumer extends Component {
 
   render() {
     return (
-      <Layout id='mount'>
+      <Layout title='Food Print'>
         <Modal
-          mountNode={document.getElementById('mount')}
           trigger={<ScanButton circular secondary size='huge' icon='qrcode'></ScanButton>}
           onUnmount={this.onUnmount}
           size='fullscreen'
@@ -53,6 +52,7 @@ export default class Consumer extends Component {
             </Modal.Description>
           </Modal.Content>
         </Modal>
+        <Header>Scan History</Header>
       </Layout>
     )
   }
