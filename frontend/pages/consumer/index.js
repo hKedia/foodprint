@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Layout from '../../components/Layout';
 import { Button, Modal, Header, Item, Label } from 'semantic-ui-react';
-import QrReader from 'react-qr-reader';
+// import QrReader from 'react-qr-reader';
 import Styled from 'styled-components';
 import Router from 'next/router';
 
@@ -67,12 +67,12 @@ export default class Consumer extends Component {
         >
           <Modal.Content>
             <Modal.Description>
-              <QrReader
+              {/* <QrReader
                 delay={300}
                 onError={this.handleError}
                 onScan={this.handleScan}
                 style={{ width: '100%' }}
-              />
+              /> */}
             </Modal.Description>
           </Modal.Content>
         </Modal>
