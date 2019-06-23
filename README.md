@@ -22,9 +22,9 @@ API(Get all harvest for a did): https://foodprint.rezervatorul.ro/users/getHarve
 
 ## About
 
-FoodPrint is a system that uses blockchain technologies to provide transparency in the supply chain of agriculture. This would be realised by connecting the consumer and producer (farmer) virtually. This connection would help the consumers to get an overview about how and when the food item was processed in the chain. 
+FoodPrint is a system that uses blockchain technologies to provide transparency in the supply chain of agriculture. This would be realized by connecting the consumer and producer (farmer) virtually. This connection would help the consumers to get an overview of how and when the food item was processed in the chain.
 
-The name FoodPrint is derived from the play of words Foot-print. Just like a foot-print can be used to track and identify a person, our application allows the user (from consumer side) to track the food item's journey. With a quick scan, the consumer would be able to know the origins of the verious ingredients which compose that particular food item.
+The name FoodPrint is derived from the play of words Foot-print. Just like a foot-print can be used to track and identify a person, our application allows the user (from the consumer side) to track the food item's journey. With a quick scan, the consumer would be able to know the origins of the various ingredients which compose that particular food item.
 
 ## Design
 
@@ -38,7 +38,7 @@ This section explains the design decisions that were made and also shows the moc
 
 * Cool Blue: The second thing that we imagine is the sky above the farms. The light shade of blue effectively facilitates the subtle intricacies in the design.
 
-* Tangy Orange: The playful orange color completes the Triad of the color wheel thus forming a harmonic balance of colors. It is utilised for gaining user's attention for action buttons.
+* Tangy Orange: The playful orange color completes the Triad of the color wheel thus forming a harmonic balance of colors. It is utilized for gaining user's attention for action buttons.
 
 * Nearly White: This shade of really light grey is used to form the base foundation for the design elements which will complete the whole design.
 
