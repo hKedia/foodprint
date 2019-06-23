@@ -14,9 +14,11 @@ API(Get all harvest for a did): https://foodprint.rezervatorul.ro/users/getHarve
 
 ## Current state of the application
 
-* `react-qr-reader` didn't work in SSR(Server Side Rendering), therefore had to use server in `dev` mode. Therefore, couldn't use docker container.
-* Currently deployed as a EC2 Instance with `nginx`
+* `react-qr-reader` didn't work in SSR(Server Side Rendering), therefore had to use server in `dev` mode. Couldn't use docker container.
+* Currently deployed as a EC2 Instance with `nginx`.
 * Login to the application requires a Blockstack Id.
+* API's running on Amazon EKS clusters.
+* If an error is shown after login, kindly reload from the root [url](https://farfrogs.rezervatorul.ro/) . This is again caused by `react-qr-reader`.
 
 ## About
 
