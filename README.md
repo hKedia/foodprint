@@ -45,3 +45,28 @@ The following persona captures the feel of the target user class - Consumer
 
 ![AppFlow](https://github.com/hKedia/foodprint/blob/master/documentation/appflow.png)
 
+### Working of the Application
+
+Our application uses a decentralized identity to uniquely identify the users. [Blockstack](https://blockstack.org/) is used for authenticating and login users which gives us a did for the user.
+
+```
+decentralizedID: "did:btc-addr:12VogX46bRPFxibHvmXsQS8Dt6xMh4QuTy"
+```
+
+The user selects their role: 'consumer' or 'supplier' and logs into the application using Blockstack PKI.
+
+The screencast shows the application flow for the consumer. Once logged in, the consumer can scan the QR Code for a food. A Sample data saved in the QR Code looks like:
+
+```
+{
+  "ingredient_id": 1004,
+  "deman_metric": 0.4,
+  "produce_metric": 0.3,
+  "transport_cost_metric": 0.6
+}
+```
+
+Once the data is read, it's passed to the REST endpoint which returns us the relavent details for the food and ingredients it's composed of.
+
+The Consumer can view details about each ingredient including their source. 
+
