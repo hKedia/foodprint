@@ -70,3 +70,8 @@ Once the data is read, it's passed to the REST endpoint which returns us the rel
 
 The Consumer can view details about each ingredient including their source. 
 
+### Fair Price Prediction
+
+The app uses [XGBoost](https://xgboost.readthedocs.io/en/latest/) algorithm to determine fair prices across the different commodities, taking into account the seasonality of Crop availability, Market demand, Transportation and Logistics costs involved. This enables customers to see if the farmer has received a fair compensation for the produce and also for the farmer to see the market fair price and adjust accordingly.
+
+The model was trained and exposed as an AWS Sagemaker endpoint and subsequently exposed as a REST API to be consumed by the Dapp.
