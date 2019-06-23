@@ -6,6 +6,18 @@
 
 Project URL: https://github.com/hKedia/foodprint
 
+Application: https://farfrogs.rezervatorul.ro/
+
+API(Batch of Sandwiches): https://foodprint.rezervatorul.ro/chain/getChain?id=1005
+
+API(Get all harvest for a did): https://foodprint.rezervatorul.ro/users/getHarvest?did=DID_2
+
+## Current state of the application
+
+* `react-qr-reader` didn't work in SSR(Server Side Rendering), therefore had to use server in `dev` mode. Therefore, couldn't use docker container.
+* Currently deployed as a EC2 Instance with `nginx`
+* Login to the application requires a Blockstack Id.
+
 ## About
 
 FoodPrint is a system that uses blockchain technologies to provide transparency in the supply chain of agriculture. This would be realised by connecting the consumer and producer (farmer) virtually. This connection would help the consumers to get an overview about how and when the food item was processed in the chain. 
@@ -60,11 +72,13 @@ The screencast shows the application flow for the consumer. Once logged in, the 
 ```
 {
   "ingredient_id": 1004,
-  "deman_metric": 0.4,
+  "demand_metric": 0.4,
   "produce_metric": 0.3,
   "transport_cost_metric": 0.6
 }
 ```
+
+![QRCode](https://github.com/hKedia/foodprint/blob/master/documentation/qrcode.png)
 
 Once the data is read, it's passed to the REST endpoint which returns us the relavent details for the food and ingredients it's composed of.
 
