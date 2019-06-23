@@ -2,6 +2,10 @@
 
 ![AppLanding](https://github.com/hKedia/foodprint/blob/master/documentation/landing.png)
 
+## Links
+
+Project URL: https://github.com/hKedia/foodprint
+
 ## About
 
 FoodPrint is a system that uses blockchain technologies to provide transparency in the supply chain of agriculture. This would be realised by connecting the consumer and producer (farmer) virtually. This connection would help the consumers to get an overview about how and when the food item was processed in the chain. 
