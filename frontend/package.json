@@ -15,7 +15,7 @@
     "express": "^4.17.1",
     "express-ws": "^4.0.0",
     "moment": "^2.24.0",
-    "next": "^8.1.0",
+    "next": "^9.3.2",
     "radiks": "^0.2.1",
     "radiks-server": "^0.1.12",
     "react": "^16.8.6",
